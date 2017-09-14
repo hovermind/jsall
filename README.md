@@ -64,6 +64,7 @@ robot.__proto__.__proto__ == Object.prototype
 **Now adding method to the `prototype` of Robot:**
 ```
 Robot.prototype.move(x, y) = function(x, y){ Robot.position.x = x; Robot.position.y = y};
+// Robot.prototype.move(x, y) ===(imagining)===> Robot.class.move(x, y)
 ```
 The above can be imagined as extension of Robot class:    
 ```    
