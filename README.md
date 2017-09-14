@@ -25,7 +25,7 @@ function Robot(name) {
     this.name = name;
 }
 ```
-The above can be imagined as:   
+**The above can be imagined as:**     
 ```
 // imaginary class
 class Robot extends Object{
@@ -57,7 +57,7 @@ robot.__proto__ == Robot.prototype
 robot.prototype == undefined
 robot.__proto__.__proto__ == Object.prototype
 ```
-**Now adding method to the `prototype` of Root:**
+**Now adding method to the `prototype` of Robot:**
 ```
 Robot.prototype.move(x, y) = function(x, y){ Robot.position.x = x; Robot.position.y = y};
 ```
