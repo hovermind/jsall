@@ -1,5 +1,9 @@
+# <a name="#toc"></a>TOC
+- [The Grand Confusion: \_\_`proto`\_\_ vs `prototype`](#proto-vs-prototype)   
 
-# The Grand Confusion: \_\_`proto`\_\_ vs `prototype`
+
+
+# <a name="#proto-vs-prototype"></a>The Grand Confusion: \_\_`proto`\_\_ vs `prototype`
 
 **First of all, every function in JavaScript is (a potential) constructor.**
 
