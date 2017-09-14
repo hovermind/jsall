@@ -48,24 +48,23 @@ class Robot extends Object{
 }
 ```
 So,    
-```
-function Robot(name) {
-    this.name = name;
-}
-var robot = new Robot();   
-
-// all are true
-Robot.__proto__ == Robot.prototype
-Robot.prototype == undefined
+```  
+robot.__proto__ == Robot.prototype
+robot.prototype == undefined
 robot.__proto__.__proto__ == Object.prototype
 ```
-and   
+Now adding method to the prototype (extending the imaginary class):
 ```
 Robot.prototype.move(x, y) = function(x, y){ Robot.position.x = x; Robot.position.y = y};
 ```
-is    
-```
-Robot.class.move(x, y) = function(x, y){ Robot.position.x = x; Robot.position.y = y};
+The avobe can be imagined as (extension of Robot class):    
+```    
+//Swift way of extention
+extension Robot{
+	function move(x, y){    
+		Robot.position.x = x; Robot.position.y = y
+	}
+}
 ```
 Which in turn   
 ```
