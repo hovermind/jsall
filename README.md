@@ -18,10 +18,9 @@ var robot = new Robot();
 robot.__proto__ == Robot.prototype
 robot.__proto__.__proto__ == Object.prototype
 ```
-My imaginary explanation:
-imagine there is an imaginary class(blueprint/coockie cutter) associated with function. That imaginary class is used to instantiate objects.
-prototype is the extention mechanism (Extention method in C#, or Swift Extension) to add things to that imaginary class (blueprint/coockie cutter).
-
+## My imaginary explanation
+Imagine there is an imaginary class(blueprint/coockie cutter) associated with function. That imaginary class is used to instantiate objects. `prototype` is the extention mechanism (extention method in C#, or Swift Extension) to add things to that imaginary class (blueprint/coockie cutter).   
+```
 function Robot(name) {
     this.name = name;
 }
@@ -47,28 +46,29 @@ class Robot extends Object{
 	}
 
 }
-
-So, 
-
+```
+So,    
+```
 function Robot(name) {
     this.name = name;
 }
-var robot = new Robot();
+var robot = new Robot();   
 
+// all are true
 Robot.__proto__ == Robot.prototype
 Robot.prototype == undefined
 robot.__proto__.__proto__ == Object.prototype
-
-and
-
+```
+and   
+```
 Robot.prototype.move(x, y) = function(x, y){ Robot.position.x = x; Robot.position.y = y};
-
-is 
-
+```
+is    
+```
 Robot.class.move(x, y) = function(x, y){ Robot.position.x = x; Robot.position.y = y};
-
-Which in turn
-
+```
+Which in turn   
+```
 // imaginary class
 class Robot{
 
@@ -91,7 +91,7 @@ class Robot{
 		Robot.position.x = x; Robot.position.y = y
 	};
 }
-
+```
 
 
 
