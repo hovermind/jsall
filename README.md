@@ -7,7 +7,7 @@
 prototype is a property of a Function. It is the blueprint for creating objects by using that (constructor) function with new keyword.
 
 ## \_\_proto\_\_
-\_\_proto\_\_ is used in the lookup chain (to resolve methods/properties). when an onject is created using (constructor) function with new kwyword, __proto__ property set to (Constructor) Function.prototype
+\_\_`proto`\_\_ is used in the lookup chain (to resolve methods/properties). when an object is created using (constructor) function with new keyword, \_\_`proto`\_\_ property set to (Constructor) Function.prototype
 ```
 function Robot(name) {
     this.name = name;
