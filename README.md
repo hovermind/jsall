@@ -22,7 +22,7 @@ var robot = new Robot();
 robot.__proto__ == Robot.prototype
 robot.__proto__.__proto__ == Object.prototype
 ```
-## My imaginary explanation
+## <a name="#my-imaginary-explanation"></a>My imaginary explanation
 Imagine there is an imaginary class(blueprint/coockie cutter) associated with function. That imaginary class is used to instantiate objects. `prototype` is the extention mechanism (extention method in C#, or Swift Extension) to add things to that imaginary class.      
 ```
 function Robot(name) {
