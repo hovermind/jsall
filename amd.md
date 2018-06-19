@@ -19,6 +19,8 @@ RequireJS is one of the AMD loaders.
 ```
 <script data-main="app.js" src="require.js"></script>
 ```
+**data-main attribute of the script tag:** This is the path to your main javascript file that contains configuration. You can think about it as a main entry point into your application.    
+
 `app.js`
 ```
 // config
@@ -42,3 +44,31 @@ require.config({
   }
 });
 ```
+## Define AMD module
+```
+// define(id?, dependencies?, factory);
+
+define( 'MyApp', ["marionette"], function (Marionette) {
+ 
+    // set up the app instance
+    var MyApp = new Marionette.Application();
+ 
+    MyApp.on("initialize:after", function(){
+      alert("Application has started!");
+    });
+ 
+    // export the app from this module
+    return MyApp;
+});
+```
+
+## Load AMD module using RequireJS
+```
+// Fetch and execute Marionette App
+require( ["MyApp"], function (MyApp) {
+    // Execute App
+    MyApp.start();
+});
+```
+
+
