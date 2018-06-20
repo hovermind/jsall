@@ -48,26 +48,40 @@ require.config({
 ```
 // define(id?, dependencies?, factory);
 
-define( 'MyApp', ["marionette"], function (Marionette) {
- 
-    // set up the app instance
-    var MyApp = new Marionette.Application();
- 
-    MyApp.on("initialize:after", function(){
-      alert("Application has started!");
-    });
- 
-    // export the app from this module
-    return MyApp;
+// Function that returns an object literal
+define('my_module', function() {
+
+    var obj = {
+        color: 'black', // module property
+        Shirt: function(size) { // ctor
+            this.size = size; // class property
+        }
+    };
+
+    return obj;
+});
+
+// Function that returns another function
+define('my_module', function() {
+
+    var Jacket = function() {
+        // ...
+    };
+
+    Jacket.prototype.zip = function() {     // Zip up the jacket
+        // ...
+    };
+
+    return Jacket;
 });
 ```
 
 ## Load AMD module using RequireJS
 ```
 // Fetch and execute Marionette App
-require( ["MyApp"], function (MyApp) {
-    // Execute App
-    MyApp.start();
+require( ["my_module"], function (MyModule) {
+
+    MyModule.start();
 });
 ```
 
