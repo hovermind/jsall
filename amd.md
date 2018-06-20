@@ -45,11 +45,12 @@ require.config({
 });
 ```
 ## Define AMD module
+Each module you make will be in a separate file; besides simplifying your development process, you'll see that module loaders such as RequireJS use the file name as the module name. Sure, you can hard-code a name for your module inside the file, but this is a bad idea. That's because, after development, you'll want to use an optimization tool to put all your modules into one file for better downloading. The optimization tool will give your modules a name, deriving it from their file name. If you've added a name for the modules within the file, this could cause some confusion.
 ```
 // define(id?, dependencies?, factory);
 
 // Function that returns an object literal
-define('my_module', function() {
+define([], function() {
 
     var obj = {
         color: 'black', // module property
@@ -62,7 +63,7 @@ define('my_module', function() {
 });
 
 // Function that returns another function
-define('my_module', function() {
+define([], function() {
 
     var Jacket = function() {
         // ...
@@ -79,7 +80,7 @@ define('my_module', function() {
 ## Load AMD module using RequireJS
 ```
 // Fetch and execute Marionette App
-require( ["my_module"], function (MyModule) {
+require( ["my/module"], function (MyModule) {
 
     MyModule.start();
 });
