@@ -19,7 +19,7 @@ RequireJS is one of the AMD loaders.
 ```
 <script data-main="js/main.js" src="require.js"></script>
 ```
-**data-main attribute**    
+[data-main attribute](http://requirejs.org/docs/api.html#data-main)     
 This is the path to your main javascript file that contains configurations. You can think about it as a main entry point into your application.
 
 ## RequireJS config `main.js`
@@ -59,7 +59,7 @@ Each module you make will be in a separate file; besides simplifying your develo
 define([], function() {
 
     var obj = {
-        color: 'black', // module property
+        Color: 'black', // module property
         Shirt: function(size) { // ctor
             this.size = size; // class property
         }
@@ -88,7 +88,10 @@ define([], function() {
 // Fetch and execute Marionette App
 require( ["my/module"], function (MyModule) {
 
-    MyModule.start();
+    MyModule.Property;
+    MyModule.Method();
+    
+    //.... .... ..... ....
 });
 ```
 
