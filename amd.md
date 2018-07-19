@@ -19,7 +19,7 @@ RequireJS is one of the AMD loaders.
 This is the path to your main javascript file. You can think about it as a main entry point into your application.   
 
 **Note:**   
-If `data-main` attribute is used, `baseUrl` will be location of that `main.js` file and will be appended to path whiling RequireJS loads scripts asynchronously. Example: If `data-main="js/main.js"` then baseUrl is `js`   
+If `data-main` attribute is used, `baseUrl` will be location of that `main.js` file and will be appended to path of scripts that RequireJS loads asynchronously. Example: If `data-main="js/main.js"` then baseUrl is `js`   
 
 In head of `index.html`
 ```
@@ -30,7 +30,6 @@ In head of `index.html`
 ```
 // config
 requirejs.config({
-	//baseUrl: 'js',
 	paths: {
 		d3 : ["lib/d3"],
 		c3 : ["lib/c3"]
@@ -39,7 +38,6 @@ requirejs.config({
 
 // or config with falback
 requirejs.config({
-	//baseUrl: 'js',
 	paths: {
 		d3 : ["https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js", "lib/d3.min"],
 		c3 : ["https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.2/c3.min.js", "lib/c3.min"],
@@ -59,7 +57,7 @@ In head of `index.html`
 ```
 // config
 requirejs.config({
-	//baseUrl: 'js',
+	baseUrl: 'js',
 	paths: {
 		d3 : ["lib/d3"],
 		c3 : ["lib/c3"]
@@ -78,6 +76,7 @@ Each module you make will be in a separate file; besides simplifying your develo
 ```
 define(id?, dependencies?, factory);
 ```
+
 #### Factory function that returns an object literal
 ```
 define(["dependency"], function() {
@@ -92,6 +91,7 @@ define(["dependency"], function() {
     return obj;
 });
 ```
+
 #### Factory function that returns another function
 ```
 define(["dependency"], function() {
