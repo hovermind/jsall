@@ -14,19 +14,23 @@ If dependencies argument is not specified it means (don’t screw this up!) that
 An AMD loader is code that implements AMD specification. There are multiple implementations.
 RequireJS is one of the AMD loaders.
 
-**Loading RequireJS**    
-`index.html`
+#### Loading RequireJS
+##### 1. Using [data-main attribute](http://requirejs.org/docs/api.html#data-main)
+This is the path to your main javascript file. You can think about it as a main entry point into your application.   
+
+**Note:**   
+If `data-main` attribute is used, `baseUrl` will be location of that `main.js` file and will be appended to path whiling RequireJS loads scripts asynchronously. Example: If `data-main="js/main.js"` then baseUrl is `js`   
+
+In head of `index.html`
 ```
 <script data-main="js/main.js" src="require.js"></script>
 ```
-[data-main attribute](http://requirejs.org/docs/api.html#data-main)     
-This is the path to your main javascript file that contains configurations. You can think about it as a main entry point into your application.
 
-## RequireJS config `main.js`
+`require_config.js`
 ```
 // config
 requirejs.config({
-	//baseUri: 'js',
+	//baseUrl: 'js',
 	paths: {
 		d3 : ["lib/d3"],
 		c3 : ["lib/c3"]
@@ -35,14 +39,33 @@ requirejs.config({
 
 // or config with falback
 requirejs.config({
-	//baseUri: 'js',
+	//baseUrl: 'js',
 	paths: {
 		d3 : ["https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js", "lib/d3.min"],
 		c3 : ["https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.2/c3.min.js", "lib/c3.min"],
 	}
 });
 ```
-**Note:** If `data-main="js/main.js"` then baseUri is `js`   
+##### 2. Using `baseUrl` instead of `data-main`
+**Note:** `baseUrl` not `baseUri`   
+
+In head of `index.html`
+```
+<script src="require.js"></script>
+<script src="js/require_config.js"></script>
+```
+
+`require_config.js`
+```
+// config
+requirejs.config({
+	//baseUrl: 'js',
+	paths: {
+		d3 : ["lib/d3"],
+		c3 : ["lib/c3"]
+	}
+});
+```
 
 #### baseUri
 Root folder from where RequireJS will load modules. See [baseUri details](http://requirejs.org/docs/api.html#config-baseUrl)
@@ -59,7 +82,7 @@ define(id?, dependencies?, factory);
 ```
 define(["dependency"], function() {
 
-    var obj = {
+    let obj = {
         Color: 'black', // module property
         Shirt: function(size) { // ctor
             this.size = size; // class property
@@ -73,7 +96,7 @@ define(["dependency"], function() {
 ```
 define(["dependency"], function() {
 
-    var Jacket = function() {
+    let Jacket = function() {
         // ...
     };
 
