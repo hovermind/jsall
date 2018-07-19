@@ -120,4 +120,4 @@ require( ["my/module"], function (MyModule) {
 });
 ```
 
-
+See [AMD module best practices](#)
