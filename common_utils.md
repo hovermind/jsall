@@ -1,9 +1,10 @@
 ```
 /**
- * AMD module: common utility
+ * @Module: common utility
  * 
- * @Author: Hassan
- * Caution: do not modify code if you don't understand 'JavaScript Asynchronous Module Definition'
+ * @Author: Hassan Md Tareq
+ * 
+ * Module for common front end tasks
  */
 
 
