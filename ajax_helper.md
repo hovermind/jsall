@@ -1,4 +1,12 @@
 ```
+/**
+ * @Module: ajax helper
+ * 
+ * @Author: Hassan Md Tareq
+ *
+ * Module to get data from server using jQuery.ajax()
+ */
+ 
 define(["jquery"], function($){
 	
 	'use strict';
