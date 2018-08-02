@@ -27,14 +27,13 @@ For synchronous loading (your script `my_script.js` might be loaded before `requ
 ##### [data-main attribute](http://requirejs.org/docs/api.html#data-main)
 This is the path to your main javascript file. You can think about it as a main entry point into your application (configuration goes here => `require_config.js` or `main.js`)  
 
-## Config
+## The Config File
 The config file is the entry point to RequireJS.   
 
 `require_config.js`
 ```
 requirejs.config({
     baseUrl: 'js',
-    deps: ['modules/app'],
     paths: {
         jquery: './lib/jquery',
 	d3 : ["./lib/d3"],
@@ -46,7 +45,6 @@ Or config with fallback
 ```
 requirejs.config({
     baseUrl: 'js',
-    deps: ['modules/app'],
     paths: {
 	jquery: ['https://code.jquery.com/jquery-3.3.1.min', './lib/jquery'],
 	d3 : ["https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js", "./lib/d3.min"],
@@ -55,18 +53,21 @@ requirejs.config({
 });
 ```
 
-##### `baseUrl: 'js'`
-Root folder from where RequireJS will load modules. If `data-main` attribute is used, `baseUrl` will be location of that `config.js` / `main.js` file Example: If `data-main="js/require_config.js"` then `baseUrl` is `/js`
+### `baseUrl: 'js'`
+Root folder from where RequireJS will load modules. If `data-main` attribute is used, `baseUrl` will be location of that `config.js` (or `main.js`) file. Example: If `data-main="js/require_config.js"` then `baseUrl` is `/js`
 
 **Note:** 
 * `baseUrl` not `baseUri`
 * `baseUrl` will be prepended before module paths while loading asynchronously
 
-See [baseUri details](http://requirejs.org/docs/api.html#config-baseUrl)
+See [baseUrl details](http://requirejs.org/docs/api.html#config-baseUrl)
 
-
-#### paths
+### paths
 For modules located in sub-dir of baseUri (baseUri will be prepended to path). See [path details](http://requirejs.org/docs/api.html#config-paths)
+
+**See:**
+* [Patterns for separating config from the main module](https://github.com/requirejs/requirejs/wiki/Patterns-for-separating-config-from-the-main-module)
+* [AMD Config Details](#)
 
 ## Define AMD module
 Each module you make will be in a separate file; besides simplifying your development process, you'll see that module loaders such as RequireJS use the file name as the module name. Sure, you can hard-code a name for your module inside the file, but this is a bad idea. That's because, after development, you'll want to use an optimization tool to put all your modules into one file for better downloading. The optimization tool will give your modules a name, deriving it from their file name. If you've added a name for the modules within the file, this could cause some confusion.
