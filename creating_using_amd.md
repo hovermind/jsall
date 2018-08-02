@@ -6,16 +6,21 @@ define(id?, dependencies?, factory);
 
 #### Factory function that returns an object literal
 ```
-define(["dependency"], function() {
+define(['jquery'], function ($) {
 
-    let obj = {
-        Color: 'black', // module property
-        Shirt: function(size) { // ctor
-            this.size = size; // class property
-        }
-    };
-
-    return obj;
+  let myModule = {
+  
+    color : '#0F0',
+    
+    sayHi: (id) => {
+    
+      let name = $(`#${id}`).val();
+      
+      console.log(`Hi ${name}`);
+    }
+  };
+  
+  return myModule;
 });
 ```
 
@@ -37,11 +42,11 @@ define(["dependency"], function() {
 
 ## Load AMD module using RequireJS
 ```
-// Fetch and execute Marionette App
-require( ["my/module"], function (MyModule) {
+require( ["modules/my_module"], function (MyModule) {
 
-    MyModule.Property;
-    MyModule.Method();
+    console.log(MyModule.color);
+    
+    MyModule.sayHi('name-field');
     
     //.... .... ..... ....
 });
