@@ -41,6 +41,7 @@ define(["dependency"], function() {
 ```
 
 ## Load AMD module using RequireJS
+`my_script.js`
 ```
 require( ["modules/my_module"], function (MyModule) {
 
