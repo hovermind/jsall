@@ -3,3 +3,4 @@
 * [AMD](https://github.com/hovermind/jsall/blob/master/amd.md)
 * [Some Important AMD modules](https://github.com/hovermind/jsall/blob/master/important_amd_modules.md)
 * [CommonJS](#)
+* [ES2015 module](#)
