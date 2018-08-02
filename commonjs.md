@@ -38,35 +38,3 @@ let myModule = {
 // expose
 module.exports = myModule;
 ```
-
-#### OR
-```
-(function (root, factory) {
-
-  let jquery = require('jquery');
-  
-  if(typeof module === "object" && module.exports) { // CommonJS support
-  
-    module.exports = factory(jquery);
-    
-  } else {
-  
-    root.myModule = factory(jquery);
-  }
-  
-}(this, function($) {
-
-  let myModule = {
-
-      sayHi: (id) => {
-
-        let name = $(`#${id}`).val();
-
-        console.log(`Hi ${name}`);
-      }
-  };
-  
-  return myModule;
-  
-});
-```
