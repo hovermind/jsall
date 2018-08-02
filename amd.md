@@ -10,63 +10,60 @@ First, two arguments id and dependencies are optional. Third factory is a functi
 If id is not specified then the module name is its file location. 
 If dependencies argument is not specified it means (don’t screw this up!) that the module has no dependencies.
 
-## RequireJS
+## RequireJS - AMD loader
 An AMD loader is code that implements AMD specification. There are multiple implementations.
 RequireJS is one of the AMD loaders.
 
-#### Loading RequireJS
-##### 1. Using [data-main attribute](http://requirejs.org/docs/api.html#data-main)
-This is the path to your main javascript file. You can think about it as a main entry point into your application.   
-
-**Note:**   
-If `data-main` attribute is used, `baseUrl` will be location of that `main.js` file and will be appended to path of scripts that RequireJS loads asynchronously. Example: If `data-main="js/main.js"` then baseUrl is `js`   
-
-In head of `index.html`
+#### Using RequireJS
+In site footer
 ```
-<script data-main="js/main.js" src="require.js"></script>
+<script src="js/lib/require.js" data-main="js/require_config"></script>
 ```
-
-`require_config.js`
-```
-// config
-requirejs.config({
-	paths: {
-		d3 : ["lib/d3"],
-		c3 : ["lib/c3"]
-	}
-});
-
-// or config with falback
-requirejs.config({
-	paths: {
-		d3 : ["https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js", "lib/d3.min"],
-		c3 : ["https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.2/c3.min.js", "lib/c3.min"],
-	}
-});
-```
-##### 2. Using `baseUrl` instead of `data-main`
-**Note:** `baseUrl` not `baseUri`   
-
-In head of `index.html`
+For synchronous loading (your script `my_script.js` might be loaded before `require_config.js` and that would cause problem)
 ```
 <script src="require.js"></script>
 <script src="js/require_config.js"></script>
 ```
+##### [data-main attribute](http://requirejs.org/docs/api.html#data-main)
+This is the path to your main javascript file. You can think about it as a main entry point into your application (configuration goes here => `require_config.js` or `main.js`)  
+
+## Config
+The config file is the entry point to RequireJS.   
 
 `require_config.js`
 ```
-// config
 requirejs.config({
-	baseUrl: 'js',
-	paths: {
-		d3 : ["lib/d3"],
-		c3 : ["lib/c3"]
-	}
+    baseUrl: 'js',
+    deps: ['modules/app'],
+    paths: {
+        jquery: './lib/jquery',
+	d3 : ["./lib/d3"],
+	c3 : ["./lib/c3"]
+    }
+});
+```
+Or config with fallback
+```
+requirejs.config({
+    baseUrl: 'js',
+    deps: ['modules/app'],
+    paths: {
+	jquery: ['https://code.jquery.com/jquery-3.3.1.min', './lib/jquery'],
+	d3 : ["https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js", "./lib/d3.min"],
+	c3 : ["https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.2/c3.min.js", "./lib/c3.min"],
+    }
 });
 ```
 
-#### baseUri
-Root folder from where RequireJS will load modules. See [baseUri details](http://requirejs.org/docs/api.html#config-baseUrl)
+##### `baseUrl: 'js'`
+Root folder from where RequireJS will load modules. If `data-main` attribute is used, `baseUrl` will be location of that `config.js` / `main.js` file Example: If `data-main="js/require_config.js"` then `baseUrl` is `/js`
+
+**Note:** 
+* `baseUrl` not `baseUri`
+* `baseUrl` will be prepended before module paths while loading asynchronously
+
+See [baseUri details](http://requirejs.org/docs/api.html#config-baseUrl)
+
 
 #### paths
 For modules located in sub-dir of baseUri (baseUri will be prepended to path). See [path details](http://requirejs.org/docs/api.html#config-paths)
