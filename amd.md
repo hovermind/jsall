@@ -62,60 +62,30 @@ Root folder from where RequireJS will load modules. If `data-main` attribute is 
 
 See [baseUrl details](http://requirejs.org/docs/api.html#config-baseUrl)
 
-### paths
-For modules located in sub-dir of baseUri (baseUri will be prepended to path). See [path details](http://requirejs.org/docs/api.html#config-paths)
+### `paths: {}`
+This defines a path to module. This is not mandatory, then you just have to use full path (baseUri will be prepended to path).   
 
-**See:**
+Without path
+```
+define(['../lib/jquery.min'], function($){
+	// ...
+});
+```
+With path
+```
+requirejs.config({
+    baseUrl: 'js',
+    paths: {
+        jquery: './lib/jquery.min',
+    }
+});
+
+define(['jquery'], function($){
+	// ...
+});
+```
+See [path details](http://requirejs.org/docs/api.html#config-paths)
+
+**More :**
 * [Patterns for separating config from the main module](https://github.com/requirejs/requirejs/wiki/Patterns-for-separating-config-from-the-main-module)
 * [AMD Config Details](#)
-
-## Define AMD module
-Each module you make will be in a separate file; besides simplifying your development process, you'll see that module loaders such as RequireJS use the file name as the module name. Sure, you can hard-code a name for your module inside the file, but this is a bad idea. That's because, after development, you'll want to use an optimization tool to put all your modules into one file for better downloading. The optimization tool will give your modules a name, deriving it from their file name. If you've added a name for the modules within the file, this could cause some confusion.
-```
-define(id?, dependencies?, factory);
-```
-
-#### Factory function that returns an object literal
-```
-define(["dependency"], function() {
-
-    let obj = {
-        Color: 'black', // module property
-        Shirt: function(size) { // ctor
-            this.size = size; // class property
-        }
-    };
-
-    return obj;
-});
-```
-
-#### Factory function that returns another function
-```
-define(["dependency"], function() {
-
-    let Jacket = function() {
-        // ...
-    };
-
-    Jacket.prototype.zip = function() {     // Zip up the jacket
-        // ...
-    };
-
-    return Jacket;
-});
-```
-
-## Load AMD module using RequireJS
-```
-// Fetch and execute Marionette App
-require( ["my/module"], function (MyModule) {
-
-    MyModule.Property;
-    MyModule.Method();
-    
-    //.... .... ..... ....
-});
-```
-
-See [AMD module best practices](#)
