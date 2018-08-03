@@ -55,6 +55,22 @@ require( ["modules/my_module"], function (MyModule) {
 
 See [AMD module best practices](#)
 
+## Skipping Dependency
+Use `_` in param of factory fucntion
+```
+require(['jquery', `my_mod`], function($, _){ // _ for my_mod to skip
+  // ... ... ...
+});
+```
+
+## Loading AMD incompatible dependency
+If dependency (i.e. Bootstrap) is not amd compatible then skip parameter for it in factory function
+```
+require(['jquery', `bootstrap`], function($){ // no param for Bootstrap
+  // ... ... ...
+});
+```
+
 ## Simplified Define Wrapper
 Instead of
 ```
@@ -77,4 +93,3 @@ define(function(require) {
     // return {}
 });
 ```
-
