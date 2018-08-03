@@ -2,6 +2,8 @@
 * a module encapsulates related code into a single unit of code - can be interpreted as moving all related functions into a file.
 * modules to be considered same as JavaScript libraries - a set of functions you want to keep togather & include in your application.
 * `node.js` has a set of built-in modules which you can use
+* `exports` and `module.exports` reference the same object
+* `node.js` runtine also has `require()` to lead module as like `require.js`
 
 ## Create module
 ```
