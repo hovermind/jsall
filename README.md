@@ -5,5 +5,5 @@
 * [Some Important AMD modules](https://github.com/hovermind/jsall/blob/master/important_amd_modules.md)
 * [CommonJS](https://github.com/hovermind/jsall/blob/master/commonjs.md)
 * [AMD, CommonJS and Browser Support](https://github.com/hovermind/jsall/blob/master/amd_commonjs_plain.md)
-* [Node Module](#)
+* [Node Module](https://github.com/hovermind/jsall/blob/master/nodejs_module.md)
 * [ES2015 module](#)
