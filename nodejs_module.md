@@ -4,15 +4,21 @@
 
 ## Create module
 ```
-let sayHi = function (name) {
-    console.log(`Hi ${name}`);
+let sayHello = function (name) {
+    return `Hello ${name}`;
 };
-exports.sayHi = sayHi;
+
+exports.greeting = function(name){
+    return sayHello(name);
+};
 
 // or
-exports.sayHi = function (name) {
-    console.log(`Hi ${name}`);
+exports.greeting = function (name) {
+    return `Hello ${name}`;
 };
+
+// also
+// exports.greeting = {};
 ```
 
 ## Load Module
