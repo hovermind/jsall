@@ -54,3 +54,27 @@ require( ["modules/my_module"], function (MyModule) {
 ```
 
 See [AMD module best practices](#)
+
+## Simplified Define Wrapper
+Instead of
+```
+define([ './a', 'b', './c', './d', './e', './f', './g', './h'...], function(A, B, C, D, E, F, G, H ...) {
+    // App logic
+});
+```
+Define can be simplified as below
+```
+define(function(require) {
+
+    let A = require('./a');
+    let B = require('./b');
+    // ... ... ...
+
+    // App logic
+    
+    return function () {};
+    // or
+    // return {}
+});
+```
+
