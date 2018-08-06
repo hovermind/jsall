@@ -52,4 +52,21 @@ import {myMethod, myClass} from "my_module.js";
 ```
 When you run a module containing an import declaration, the modules it imports are loaded first, then each module body is executed in a depth-first traversal of the dependency graph, avoiding cycles by skipping anything already executed.
 
+## Renaming imports and exports
+Import
+```
+import {doSomething as ds1} from "my_module_1.js";
+import {doSomething as ds2} from "my_module_2.js";
+```
+Export
+```
+function v1() { ... }
+function v2() { ... }
+
+export {
+  v1 as streamV1,
+  v2 as streamV2,
+  v2 as streamLatestVersion
+};
+```
 
