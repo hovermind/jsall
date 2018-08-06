@@ -18,6 +18,18 @@ export class myClass{
 
 }
 ```
+Or
+```
+export {myMethod, myClass};
+
+function myMethod(){
+
+}
+
+class myClass{
+
+}
+```
 * you can export any top-level `function`, `class`, `var`, `let`, or `const`
 * the code is a module, not a script, all the declarations will be scoped to that module
 * the code in a module is pretty much just normal code
@@ -38,6 +50,6 @@ To import multiple names from a module, you would write:
 ```
 import {myMethod, myClass} from "my_module.js";
 ```
-
+When you run a module containing an import declaration, the modules it imports are loaded first, then each module body is executed in a depth-first traversal of the dependency graph, avoiding cycles by skipping anything already executed.
 
 
