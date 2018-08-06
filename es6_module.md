@@ -16,5 +16,7 @@ export class myClass{
 
 }
 ```
-#### You can export any top-level `function`, `class`, `var`, `let`, or `const`
+* you can export any top-level `function`, `class`, `var`, `let`, or `const`
+* the code is a module, not a script, all the declarations will be scoped to that module
+* if your module runs in a web browser, it can use document and `XMLHttpRequest`
 
