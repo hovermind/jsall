@@ -6,9 +6,11 @@ There are two differences:
 
 ## `export`
 Everything declared inside a module is local to the module, by default. If you want something declared in a module to be public, 
-so that other modules can use it, you must export that feature. There are a few ways to do this. The simplest way is to add the export keyword.
+so that other modules can use it, you must export that feature. There are a few ways to do this. The simplest way is to add the export keyword.   
+
+`my_module.js`
 ```
-export function myFunc(){
+export function myMethod(){
 
 }
 
@@ -18,5 +20,24 @@ export class myClass{
 ```
 * you can export any top-level `function`, `class`, `var`, `let`, or `const`
 * the code is a module, not a script, all the declarations will be scoped to that module
+* the code in a module is pretty much just normal code
 * if your module runs in a web browser, it can use document and `XMLHttpRequest`
+
+## `import`
+```
+import {myMethod} from "my_module.js";
+
+function doSomthing() {
+
+  // ...
+  myMethod();
+  
+}
+```
+To import multiple names from a module, you would write:
+```
+import {myMethod, myClass} from "my_module.js";
+```
+
+
 
