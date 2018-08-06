@@ -70,3 +70,13 @@ export {
 };
 ```
 
+## Importing AMD module to CS6 module
+```
+import {each, map} from "lodash";
+
+import _ from "lodash";
+
+import colors from "colors/safe";
+
+import * as cows from "cows"; // cows.moo()
+```
