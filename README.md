@@ -6,4 +6,4 @@
 * [CommonJS](https://github.com/hovermind/jsall/blob/master/commonjs.md)
 * [AMD, CommonJS and Browser Support](https://github.com/hovermind/jsall/blob/master/amd_commonjs_plain.md)
 * [Node Module](https://github.com/hovermind/jsall/blob/master/nodejs_module.md)
-* [ES6 module](#)
+* [ES6 module](https://github.com/hovermind/jsall/blob/master/es6_module.md)
