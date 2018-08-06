@@ -16,5 +16,5 @@ export class myClass{
 
 }
 ```
-#### You can export any top-level function, class, var, let, or const.
+#### You can export any top-level `function`, `class`, `var`, `let`, or `const`
 
