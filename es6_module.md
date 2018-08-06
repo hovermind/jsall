@@ -80,3 +80,4 @@ import colors from "colors/safe";
 
 import * as cows from "cows"; // cows.moo()
 ```
+See: [ES6 Module Details](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/)
