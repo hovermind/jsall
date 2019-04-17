@@ -1,4 +1,34 @@
 ## Common validation of form inputs on submit
+```js
+function isFormInputValid(){
+
+	let isValid = true;
+
+	// 共通Validation（例えばEmptyとNullチェック）
+	// English: Common Validation (i.e. Empty or null check)
+	$.each($('form').serializeArray(), function(index, field) {
+
+		console.log(index + ": " + field.name + " => " + field.value);
+
+		if(!field.value){
+		  isValid = false;
+		}
+
+	});
+
+	/* 
+	* Validation論理はいれてください
+	* English: Validation logic here
+	*/
+
+	//「○○」のValidation
+	// English: Validation of [xxx]
+
+	return isValid;
+}
+```
+
+**Sample**
 ```html
 <!DOCTYPE html>
 <html>
