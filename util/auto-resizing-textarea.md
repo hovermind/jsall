@@ -46,18 +46,17 @@ $(function(){
 
     let $readOnlyTextArea = $('textarea[readonly="readonly"]');
     
+$(function(){
+
+    let $readOnlyTextArea = $('textarea[readonly="readonly"]');
     if($readOnlyTextArea){
-    
-        $readOnlyTextArea.each(function( index ) {
-	
-            // when row is set, don't call autosize() (show the scroll bar)
-            if($readOnlyTextArea[index].attr("rows")){
-                return;
+        for(index = 0; index < $readOnlyTextArea.length; index++){
+            if($($readOnlyTextArea[index]).attr("rows")){
+                continue;
             }
-	    
-            // use autosize()
             autosize($readOnlyTextArea[index]);
-        });
+        }
     }
+});
 });
 ```
