@@ -20,3 +20,44 @@ $(function(){
     }
 });
 ```
+
+## Exclude Textarea if Rows is Set
+```js
+$(function(){
+
+    let $readOnlyTextArea = $('textarea[readonly="readonly"]');
+    
+    if($readOnlyTextArea){
+
+	    // when row is set, don't call autosize() (show the scroll bar)
+	    if($readOnlyTextArea.attr("rows")){
+		return;
+	    }
+
+	    // use autosize()
+	    autosize($readOnlyTextArea);
+    }
+});
+```
+
+## Mutiple Textareas
+```js
+$(function(){
+
+    let $readOnlyTextArea = $('textarea[readonly="readonly"]');
+    
+    if($readOnlyTextArea){
+    
+        $readOnlyTextArea.each(function( index ) {
+	
+            // when row is set, don't call autosize() (show the scroll bar)
+            if($readOnlyTextArea[index].attr("rows")){
+                return;
+            }
+	    
+            // use autosize()
+            autosize($readOnlyTextArea[index]);
+        });
+    }
+});
+```
