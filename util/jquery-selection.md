@@ -11,3 +11,19 @@ console.log("foo named checkboxes => " + list.length);
 let list = $('input:checkbox:not(:checked)[name*="checkList"]');
 console.log("not checked => " + list.length);
 ```
+
+## Exist or not Exist
+jQuery object check
+```js
+if ($(selector).length > 0) {
+    // Do something
+}
+```
+
+Value check
+```js
+let val = $('#id');
+if (val) {
+    // Do something
+}
+```
