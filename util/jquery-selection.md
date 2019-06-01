@@ -8,7 +8,7 @@ console.log("foo named checkboxes => " + list.length);
 
 ## Select not checked check boxes
 ```js
-let list = $('input:checkbox:not(:checked)[name*="checkList"]');
+let list = $('input:checkbox:not(:checked)[name*="fooCheckboxList"]');
 console.log("not checked => " + list.length);
 ```
 
