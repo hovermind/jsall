@@ -73,3 +73,23 @@
 </html>
 ```
   
+## Localization
+* can be localized by using scripts or setting
+* jquery-ui has region specific scripts that will localize date picker only (need seperate script/setting for time add-on)
+* if region specific scripts do not cover all texts, then you can provide your custon text using setting
+
+## Localization By Script
+* localizing datepciker: https://stackoverflow.com/questions/494958/how-do-i-localize-the-jquery-ui-datepicker
+* localizing timepicker: load localized script (i.e. `jquery-ui-timepicker-addon-ja.js`) after `jquery-ui-timepicker-addon.js`
+
+Scripts
+```html
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="./datepicker-ja.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-ja.js"></script>
+```
+Note: `<script src="./datepicker-ja.js"></script>` => copy localized script from https://github.com/jquery/jquery-ui/tree/master/ui/i18n and then create a js file
+
+## Localization By Setting
