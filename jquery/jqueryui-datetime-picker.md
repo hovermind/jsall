@@ -1,6 +1,9 @@
-## Datetime picker
-* Courtesy:
-* Settings:
+## Basic Datetime Picker
+* Courtesy: [trentrichardson.com](https://trentrichardson.com/examples/timepicker/#basic_examples)
+* JS and CSS (cdnjs):
+  * [jquery](https://cdnjs.com/libraries/jquery)
+  * [jquery-ui](https://cdnjs.com/libraries/jqueryui)
+  * [jquery-ui-timepicker-addon](https://cdnjs.com/libraries/jquery-ui-timepicker-addon)
 
 `foo.html`
 ```html
