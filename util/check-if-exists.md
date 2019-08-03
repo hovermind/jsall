@@ -13,6 +13,13 @@ if( $('#foo').length )
 }
 ```
 
+Exist check util
+```js
+function isJqObjectExist(selector){ // selector => '#foo', '.foo' etc.
+  return $(selector).length > 0;
+}
+```
+
 ## Variable check
 #### variables that may or may not be declared
 ```js
@@ -22,7 +29,25 @@ if( typeof x !== 'undefined' )
 }
 ```
 
-#### declared variables
+#### value check for declared variables
+```js
+if( foo ) {
+  // foo has value
+}
+
+if( !foo ) {
+   //foo does have any value ('', empty, blank etc.)
+}
+```
+The `if(foo)` will check:
+* null
+* undefined
+* NaN
+* empty string ("")
+* 0
+* false
+
+#### only null check for declared variables
 ```js
 if (variable == null) { // checks both null and undefined for declared variables
   // do something 
@@ -34,24 +59,6 @@ if( variable === 'undefined' || variable === null ){
   // do something 
 }
 ```
-
-#### value check for declared variables
-```js
-if( foo ) {
-  // foo has value
-}
-
-if( !foo ) {
-   foo does have any value ('', empty, blank etc.)
-}
-```
-The `if(foo)` will check:
-* null
-* undefined
-* NaN
-* empty string ("")
-* 0
-* false
 
 #### declared and has value check
 ```js
