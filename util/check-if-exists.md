@@ -20,6 +20,15 @@ function isJqObjectExist(selector){ // selector => '#foo', '.foo' etc.
 }
 ```
 
+## JS object check
+```js
+let foo = {};
+
+if($.isEmptyObject(foo)){
+  // foo is an empty object
+}
+```
+
 ## Variable check
 #### variables that may or may not be declared
 ```js
