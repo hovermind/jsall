@@ -204,11 +204,7 @@ function activateCalenderWidget(fieldSelector, calenderSettings){
 	if(!calenderSettings || $.isEmptyObject(calenderSettings)){ // when calenderSettings is not set
 		console.log("calenderSettings is not set, using default Settings");
 	} else {
-	
-		/*
-		* using if-else instead of conditional ?: operator (in case more conditions are needed, we can just add else-if)
-		*/
-		
+
 		// dateFormat
 		if( !isEmpty(calenderSettings.dateFormat) ){
 			dateFormat = calenderSettings.dateFormat;
