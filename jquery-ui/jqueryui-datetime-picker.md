@@ -92,7 +92,8 @@ Scripts
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-ja.js"></script>
 ```
-Note: `<script src="./datepicker-ja.js"></script>` => copy localized script from https://github.com/jquery/jquery-ui/tree/master/ui/i18n and then create a js file
+Note:    
+`<script src="./datepicker-ja.js"></script>` => create a js file and copy localized script from https://github.com/jquery/jquery-ui/tree/master/ui/i18n
 
 ## Localization By Setting
 ```js
@@ -287,6 +288,6 @@ function activateCalenderWidget(fieldSelector, calenderSettings){
 
 // using activateCalenderWidget
 $(function(){
-	activateCalenderWidget('', {} );
+	activateCalenderWidget('', {});
 });
 ```
