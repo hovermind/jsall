@@ -165,7 +165,7 @@ function beforeShowCallbackForClearButtonJP(input, obj){
 }
 
 
-function activateCalenderWidget(fieldSelector, calenderSettings){
+function activateCalenderDT(fieldSelector, calenderSettings){
 	
 	"use strict";
 
@@ -288,6 +288,6 @@ function activateCalenderWidget(fieldSelector, calenderSettings){
 
 // using activateCalenderWidget
 $(function(){
-	activateCalenderWidget('', {});
+	activateCalenderDT('', {});
 });
 ```
