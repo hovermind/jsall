@@ -4,7 +4,9 @@
   * [jquery](https://cdnjs.com/libraries/jquery)
   * [jquery-ui](https://cdnjs.com/libraries/jqueryui)
   * [jquery-ui-timepicker-addon](https://cdnjs.com/libraries/jquery-ui-timepicker-addon)
+* [Datetime picker using utility function](Datetime-picker-using-utility-function)
 
+## Simple Datetime Picker
 `foo.html`
 ```html
 <!DOCTYPE html>
@@ -93,3 +95,198 @@ Scripts
 Note: `<script src="./datepicker-ja.js"></script>` => copy localized script from https://github.com/jquery/jquery-ui/tree/master/ui/i18n and then create a js file
 
 ## Localization By Setting
+```js
+// region japan
+$.timepicker.regional['ja'] = {
+	timeOnlyTitle: '時間を選択',
+	timeText: '時間', // 時間 text is not needed
+	hourText: '時',
+	minuteText: '分',
+	secondText: '秒',
+	millisecText: 'ミリ秒',
+	microsecText: 'マイクロ秒',
+	timezoneText: 'タイムゾーン',
+	currentText: '現時刻',
+	closeText: '閉じる',
+	timeSuffix: '',
+	amNames: ['午前', 'AM', 'A'],
+	pmNames: ['午後', 'PM', 'P'],
+	isRTL: false
+};
+
+// set default region (will be applied to all picker in same context)
+$.timepicker.setDefaults($.timepicker.regional['ja']);
+
+$picker.datetimepicker({
+  ... : ...
+});
+```
+
+## Datetime picker using utility function
+```js
+function isEmpty(x){
+  return (typeof x === "undefined" || !x);
+}
+
+var regionSettingsJapan = {
+	timeOnlyTitle: '時間を選択',
+	timeText: '時間', // 時間 text is not needed
+	hourText: '時',
+	minuteText: '分',
+	secondText: '秒',
+	millisecText: 'ミリ秒',
+	microsecText: 'マイクロ秒',
+	timezoneText: 'タイムゾーン',
+	currentText: '',
+	closeText: '閉じる',
+	timeSuffix: '',
+	amNames: ['午前', 'AM', 'A'],
+	pmNames: ['午後', 'PM', 'P'],
+	isRTL: false
+};
+		
+function beforeShowCallbackForClearButtonJP(input, obj){
+	setTimeout(function() {
+	var buttonPane = $( input ).datepicker( "widget" ).find( ".ui-datepicker-buttonpane" );        
+	$("#BCL").hide();
+	$("#BTDY").hide();
+	$("<button>", {
+		  text: "クリアする",
+		  click: function() {
+			$(input).val('');                
+		  }
+	}).addClass('ui-state-default ui-corner-all').appendTo( buttonPane );
+	}, 1);
+}
+
+
+function activateCalenderWidget(fieldSelector, calenderSettings){
+	
+	'use strict'
+
+	let defaultSelector = '.jq-ui-calendar';
+	if(!fieldSelector){
+		console.log("using defaultSelector: " + defaultSelector);
+		fieldSelector = defaultSelector;
+	}
+	
+	/*
+	* get object array
+	* for id: $dateInputFields.length = 1
+	* for class: $dateInputFields.length >= 1
+	*/
+	let $dateInputFields =  $(fieldSelector);
+	if(!$dateInputFields || $dateInputFields.length < 1){
+		console.log("none of the input fields using '" + fieldSelector + "'");
+		return;
+	}else{
+		console.log("nunber of date/datetime input fields: " + $dateInputFields.length);
+	}
+
+	// initializing default values
+	let dateFormat = 'yy/mm/dd';
+	let timeFormat = 'HH:mm';
+	let controlType = 'select';
+	let numberOfMonths = 3;
+	let showCurrentAtPos = 1;
+	let showButtonPanel = true;
+	let oneLine = true;
+	let regionCode = 'ja';
+	let regionSettings = regionSettingsJapan;
+	let beforeShowCallback = beforeShowCallbackForClearButtonJP;
+	
+	// normalizing setting values
+	if(!calenderSettings || $.isEmptyObject(calenderSettings)){ // when calenderSettings is not set
+		console.log("calenderSettings is not set, using default Settings");
+	} else {
+	
+		/*
+		* using if-else instead of conditional ?: operator (in case more conditions are needed, we can just add else-if)
+		*/
+		
+		// dateFormat
+		if( !isEmpty(calenderSettings.dateFormat) ){
+			dateFormat = calenderSettings.dateFormat;
+		}
+		
+		// timeFormat
+		if( !isEmpty(calenderSettings.timeFormat) ){
+			timeFormat = calenderSettings.timeFormat;
+		}
+		
+		// controlType (i.e. 'select')
+		if( !isEmpty(calenderSettings.controlType) ){
+			controlType = calenderSettings.controlType;
+		}
+		
+		// numberOfMonths (i.e. 1, 3)
+		if( !isEmpty(calenderSettings.numberOfMonths) ){
+			numberOfMonths = calenderSettings.numberOfMonths;
+		}
+		
+		// showCurrentAtPos (0, 1)
+		if( !isEmpty(calenderSettings.showCurrentAtPos) ){
+			if(!isEmpty(calenderSettings.numberOfMonths) && numberOfMonths <= 1){
+				showCurrentAtPos = 0;
+			}else{
+				showCurrentAtPos = calenderSettings.showCurrentAtPos;
+			}
+		}
+
+		// showButtonPanel
+		if( !isEmpty(calenderSettings.showButtonPanel) ){
+			showButtonPanel = calenderSettings.showButtonPanel;
+		}
+		
+		// oneLine
+		if( !isEmpty(calenderSettings.oneLine) ){
+			oneLine = calenderSettings.oneLine;
+		}
+
+		// region
+		if( !isEmpty(calenderSettings.region) ){
+		
+			// region code
+			if( !isEmpty(calenderSettings.region.regionCode) ){
+				regionCode = calenderSettings.region.regionCode;
+			}
+			
+			// regional text settings
+			if( !isEmpty(calenderSettings.region.regionSettings) ){
+				regionSettings = calenderSettings.region.regionSettings;
+			}
+		}
+
+		// beforeShowCallback
+		if( !isEmpty(calenderSettings.beforeShowCallback) ){
+			beforeShowCallback = calenderSettings.beforeShowCallback;
+		}
+	}
+	
+	// set default region for calender
+	$.timepicker.regional[regionCode] = regionSettings;
+	$.timepicker.setDefaults($.timepicker.regional[regionCode]);
+	
+	let calenderSettingsToApply = {
+		dateFormat: dateFormat,
+		timeFormat: timeFormat,
+		controlType: controlType, // for time
+		numberOfMonths: numberOfMonths,
+		showCurrentAtPos: showCurrentAtPos,
+		changeYear: true,
+		changeMonth: true,
+		showButtonPanel: showButtonPanel,
+		oneLine: oneLine,
+		beforeShow: beforeShowCallback,
+	};
+	
+	console.log("calenderSettingsToApply : " + JSON.stringify(calenderSettingsToApply, null, 2));
+	
+	$dateInputFields.datetimepicker(calenderSettingsToApply);
+}
+
+// using activateCalenderWidget
+$(function(){
+	activateCalenderWidget('', {} );
+});
+```
