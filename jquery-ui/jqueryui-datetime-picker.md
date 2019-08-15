@@ -4,7 +4,7 @@
   * [jquery](https://cdnjs.com/libraries/jquery)
   * [jquery-ui](https://cdnjs.com/libraries/jqueryui)
   * [jquery-ui-timepicker-addon](https://cdnjs.com/libraries/jquery-ui-timepicker-addon)
-* [Datetime picker using utility function](Datetime-picker-using-utility-function)
+* [Datetime picker using utility function](#Datetime-picker-using-utility-function)
 
 ## Simple Datetime Picker
 `foo.html`
