@@ -167,7 +167,7 @@ function beforeShowCallbackForClearButtonJP(input, obj){
 
 function activateCalenderWidget(fieldSelector, calenderSettings){
 	
-	'use strict'
+	"use strict";
 
 	let defaultSelector = '.jq-ui-calendar';
 	if(!fieldSelector){
