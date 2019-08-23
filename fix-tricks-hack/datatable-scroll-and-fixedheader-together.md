@@ -1,4 +1,5 @@
-## JS
+## Method 1
+##### JS
 ```js
 $(function () {
 
@@ -31,7 +32,7 @@ $(function () {
 });
 ```
 
-## CSS
+##### CSS
 ```css
 table.dataTable.fixedHeader-floating {
      display: none !important; /* Hide the fixedHeader since we dont need it*/
@@ -51,4 +52,41 @@ table.dataTable.fixedHeader-floating {
 .dataTables_scrollBody{
     padding-top: 60px;
 }
+```
+
+## Method 2 - trick by window scroll
+If method 1 does not work, use window sroll instead
+```js
+// on init complete
+function onDataTableInitComplete(settings, json) {
+
+    // override width of the table
+    let $dataTables = $('.dataTable');
+    if($dataTables.length){
+      $dataTables.css('width', 'max-content');
+    }
+
+    // onscroll window horizontally -> set body with: max-content
+    $(window).on('scroll', function() {
+        let $body = $('body');
+        let horizontalScroll = $(this).scrollLeft();
+        //console.log("Horizontally scrolled: " + horizontalScroll);
+        if(horizontalScroll > 0){
+            $body.css('width', 'max-content'); //$body.css('width', '100%');
+        } else {
+            $body.css('width', 'auto'); //$body.prop("style").removeProperty("width");
+        }
+    });
+}
+
+// data table
+$(function() {
+    let dt = $('#example');
+    dt.DataTable({
+	  fixedHeader: true,
+	  //scrollX: true,
+	  pageLength: 100,
+	  initComplete: onDataTableInitComplete
+    });
+});
 ```
