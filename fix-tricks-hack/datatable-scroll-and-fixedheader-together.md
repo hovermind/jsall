@@ -32,6 +32,16 @@ $(function () {
 });
 ```
 
+Auto margin adjustment
+```js
+// get initial Y
+let yPositionScrollHeadInner = window.scrollY + document.querySelector('.dataTables_scrollHeadInner').getBoundingClientRect().top;
+//console.log("adjusment mergin: " + yPositionScrollHeadInner);
+
+// ==>> use yPositionScrollHeadInner
+var margin = yPositionScrollHeadInner; // Adjust it to your needs
+```
+
 ##### CSS
 ```css
 table.dataTable.fixedHeader-floating {
