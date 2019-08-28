@@ -293,5 +293,37 @@ $(function(){
 ```
 
 
-## Trouble shooting
-* Prev button not working when using currentPositionAt: https://stackoverflow.com/a/43525119/4802664
+# Trouble shooting
+#### Prev button not working when using currentPositionAt
+https://stackoverflow.com/a/43525119/4802664
+
+#### Clear button disappears on changing month or year
+```js
+function beforeShowCallbackForClearButton(input, obj){
+    setTimeout(function() {
+        var buttonPane = $( input ).datepicker( "widget" ).find( ".ui-datepicker-buttonpane" );        
+        $("#BCL").hide();
+        $("#BTDY").hide();
+        $("<button>", {
+            text: "クリアする",
+            click: function() {
+                  $(input).val('');                
+            }
+        }).addClass('ui-state-default ui-corner-all').appendTo( buttonPane );
+    }, 1);
+}
+
+function onChangeMonthYearInPicker(year, month, inst){
+    console.log("onChangeMonthYear ");
+    beforeShowCallbackForClearButtonJP(this, '');
+}
+
+
+let calenderSettingsToApply = {
+    ... : ...
+    beforeShow: beforeShowCallback,
+    onChangeMonthYear: onChangeMonthYearInPicker
+};
+
+$dateInputField.datepicker(calenderSettingsToApply);
+```
