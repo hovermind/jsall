@@ -291,3 +291,7 @@ $(function(){
 	activateCalenderDT('', {});
 });
 ```
+
+
+## Trouble shooting
+* Prev button not working when using currentPositionAt: https://stackoverflow.com/a/43525119/4802664
