@@ -1,3 +1,5 @@
+## Better than method 1 & 2 : https://stackoverflow.com/a/57750872/4802664
+
 ## Method 1
 ##### JS
 ```js
