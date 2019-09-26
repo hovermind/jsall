@@ -83,3 +83,10 @@ function isEmpty(foo){
 }
 ```
 
+## Data attribute exist
+```js
+if ($("#id").data('timer')) {
+  //exist
+}
+```
+
