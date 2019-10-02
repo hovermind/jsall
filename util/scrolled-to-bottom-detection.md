@@ -52,3 +52,87 @@ setupScrollableDivScrolledToBottom({
     }
 });
 ```
+
+## Iframe
+```js
+function setupIframeScrollToBottom({ targetIframe, 
+    iframeInBootstrapModal = true, 
+    bootstrapModalSelector = '.iframed-modal', 
+    scrolledToBottomThreshold = 1,
+    onScrolledToBottom}){
+    
+    let $iframe = $(targetIframe);
+    let $iframeContentWindow = $(targetIframe.contentWindow);
+    
+    let iframeVisibleFrameHeight = 0;
+    let iframeScrollHeight = 0;
+    
+    if(iframeInBootstrapModal){
+        
+        // get iframe container modal
+        let $modal = $(bootstrapModalSelector);
+        
+        if($modal){
+            
+            // when modal is shown, calculate heights
+            $modal.on('shown.bs.modal', function(){
+                
+                //console.log(bootstrapModalSelector + " is shown");
+                
+                //iframeContainerDivHeight = $iframeContainerDiv.outerHeight();
+                iframeVisibleFrameHeight = $iframe.height();
+                //console.log("iframeVisibleFrameHeight => " + iframeVisibleFrameHeight);
+                
+                iframeScrollHeight = targetIframe.contentDocument.body.scrollHeight;
+                //console.log("iframeScrollHeight => " + iframeScrollHeight);
+            });
+            
+            // scroll event listener
+            $iframeContentWindow.on('scroll', function(e){
+
+                let scrollTop = $(this).scrollTop();
+                //console.log("scrollTop => " + scrollTop);
+
+                let contentSeen = (iframeVisibleFrameHeight + scrollTop);
+                //console.log("contentSeen => " + contentSeen);
+                
+                // scrolled to bottom check
+                let distanceToBottom = (iframeScrollHeight - contentSeen);
+                if( (contentSeen >= iframeScrollHeight) || (distanceToBottom <= scrolledToBottomThreshold) ){
+                    onScrolledToBottom();
+                    return;
+                }
+            });
+        }
+    } else {
+        // normal iframe (iframe not in modal)
+    }
+}
+```
+
+#### Usage
+```js
+function onLoadFooIframe(iframe){
+
+    setupIframeScrollToBottom({
+        targetIframe: iframe, 
+        iframeInBootstrapModal: true, 
+        bootstrapModalSelector: '#fooModal', 
+        scrolledToBottomThreshold: 5,
+        onScrolledToBottom: function(){
+            //console.log("onScrolledToBottom callback called");
+            //enableButton(closeBtnSelector);
+        }
+    });
+}
+```
+In page
+```html
+<div class="modal-body">
+    <iframe onload="onLoadFooIframe(this);"
+            class="form-control mh-450px" 
+            id="fooIframe" 
+            src="about:blank" 
+            srcdoc="<rendered by view engine (i.e. razor, thymeleaf, jsf etc.)>" />
+</div>
+```
